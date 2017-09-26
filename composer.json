@@ -9,7 +9,8 @@
         "fideloper/proxy": "~3.3",
         "folklore/graphql": "^1.0",
         "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "noh4ck/graphiql": "dev-master"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
@@ -31,6 +32,12 @@
             "Tests\\": "tests/"
         }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/ardani/laravel-graphiql"
+        }
+    ],
     "extra": {
         "laravel": {
             "dont-discover": [
