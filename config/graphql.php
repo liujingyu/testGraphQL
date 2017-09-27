@@ -140,7 +140,13 @@ return [
      */
     'types' => [
         'User' => 'App\GraphQL\Type\UserType',
-
+        'Post' => 'App\GraphQL\Type\PostType',
+        //'Test' => 'App\GraphQL\Type\TestType',
+        'Profile' => 'App\GraphQL\Type\ProfileType',
+        'Human' => 'App\GraphQL\Type\HumanType',
+        'Episode' => 'App\GraphQL\Enums\EpisodeEnum',
+        'Character' => 'App\GraphQL\Interfaces\CharacterInterface',
+        //'PictureField' => 'App\GraphQL\Fields\PictureField',
     ],
 
     /*
