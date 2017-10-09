@@ -23,30 +23,22 @@ class UpdateUserPasswordMutation extends Mutation
     public function args()
     {
         return [
-            'id' => [
-                'name' => 'id',
-                'type' => Type::string(),
-                'rules' => ['required']
-            ],
             'email' => [
                 'name' => 'email',
                 'type' => Type::string(),
                 'rules' => ['required', 'email']
+            ],
+            'password' => [
+                'name' => 'password',
+                'type' => Type::string(),
+                'rules' => ['required']
             ]
         ];
     }
 
-	public function rules()
-	{
-		return [
-			'id' => ['required'],
-			'email' => ['required', 'email']
-		];
-	}
-
     public function resolve($root, $args, $context, ResolveInfo $info)
 	{
-		$user = User::find($args['id']);
+		$user = User::where('email', $args['email'])->first();
 		if(!$user)
 		{
 			return null;

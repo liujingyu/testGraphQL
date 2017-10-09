@@ -112,12 +112,13 @@ return [
         'default' => [
             'query' => [
                 'users' => 'App\GraphQL\Query\UsersQuery',
+                'pigs' => 'App\GraphQL\Query\PigQuery',
 
             ],
             'mutation' => [
                 'updateUserPassword' => 'App\GraphQL\Mutation\UpdateUserPasswordMutation',
-
-
+                'createPig' => 'App\GraphQL\Mutation\CreatePigMutation',
+                'updatePig' => 'App\GraphQL\Mutation\UpdatePigMutation',
             ]
         ]
     ],
@@ -141,6 +142,7 @@ return [
     'types' => [
         'User' => 'App\GraphQL\Type\UserType',
         'Post' => 'App\GraphQL\Type\PostType',
+        'Pig' => 'App\GraphQL\Type\PigType',
         //'Test' => 'App\GraphQL\Type\TestType',
         'Profile' => 'App\GraphQL\Type\ProfileType',
         'Human' => 'App\GraphQL\Type\HumanType',
