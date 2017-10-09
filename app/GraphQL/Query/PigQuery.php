@@ -26,6 +26,7 @@ class PigQuery extends Query
 			'id' => ['name' => 'id', 'type' => Type::string()],
 			'name' => ['name' => 'name', 'type' => Type::string()],
 			'code' => ['name' => 'code', 'type' => Type::string()],
+			'birth' => ['name' => 'birth', 'type' => Type::string()],
 		];
 	}
 

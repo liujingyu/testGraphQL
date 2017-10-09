@@ -32,6 +32,11 @@ class CreatePigMutation extends Mutation
                 'name' => 'code',
                 'type' => Type::string(),
                 'rules' => ['required', 'unique:pigs,code']
+            ],
+            'birth' => [
+                'name' => 'birth',
+                'type' => Type::string(),
+                'rules' => ['required', 'date']
             ]
         ];
     }
@@ -41,6 +46,7 @@ class CreatePigMutation extends Mutation
         $pig = Pig::create([
             'name' => $args['name'],
             'code' => $args['code'],
+            'birth' => $args['birth'],
             'user_id' => 1,
         ]);
 

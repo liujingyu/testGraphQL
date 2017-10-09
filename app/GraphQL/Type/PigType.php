@@ -24,6 +24,10 @@ class PigType extends BaseType
 				'type' => Type::string(),
 				'description' => 'The name of pig'
             ],
+			'birth' => [
+				'type' => Type::string(),
+				'description' => 'The birth of pig'
+            ],
 			'code' => [
 				'type' => Type::string(),
 				'description' => 'The code of pig'

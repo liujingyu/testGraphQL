@@ -32,6 +32,11 @@ class UpdatePigMutation extends Mutation
                 'name' => 'code',
                 'type' => Type::string(),
                 'rules' => ['required', 'exists:pigs,code']
+            ],
+            'birth' => [
+                'name' => 'birth',
+                'type' => Type::string(),
+                'rules' => ['required', 'date']
             ]
         ];
     }
@@ -42,6 +47,7 @@ class UpdatePigMutation extends Mutation
 
 		$pig->code = $args['code'];
 		$pig->name = $args['name'];
+		$pig->birth = $args['birth'];
 		$pig->save();
 
 		return $pig;
