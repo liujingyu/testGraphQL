@@ -23,10 +23,8 @@ class PigQuery extends Query
 	public function args()
 	{
 		return [
-			'id' => ['name' => 'id', 'type' => Type::string()],
-			'name' => ['name' => 'name', 'type' => Type::string()],
+            'id' => ['name' => 'id', 'type' => Type::string()],
 			'code' => ['name' => 'code', 'type' => Type::string()],
-			'birth' => ['name' => 'birth', 'type' => Type::string()],
 		];
 	}
 
@@ -34,7 +32,14 @@ class PigQuery extends Query
     {
         $fields = $info->getFieldSelection($depth = 3);
 
-        $pigs = Pig::query();
+        if (empty($args)) {
+            return Pig::query()->get();
+        }
+
+        foreach ($args as $k => $v) {
+            $pigs = Pig::where($k, $v);
+            break;
+        }
 
         return $pigs->get();
     }

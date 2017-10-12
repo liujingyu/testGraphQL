@@ -113,7 +113,7 @@ return [
             'query' => [
                 'users' => 'App\GraphQL\Query\UsersQuery',
                 'pigs' => 'App\GraphQL\Query\PigQuery',
-
+                'hello' => 'App\GraphQL\Query\HelloQuery',
             ],
             'mutation' => [
                 'updateUserPassword' => 'App\GraphQL\Mutation\UpdateUserPasswordMutation',

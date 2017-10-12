@@ -17,6 +17,27 @@ window.Vue = require('vue');
 
 Vue.component('example', require('./components/Example.vue'));
 
+import Vue from 'vue'
+import { ApolloClient, createBatchingNetworkInterface } from 'apollo-client'
+import VueApollo from 'vue-apollo'
+
+// Create the apollo client
+const apolloClient = new ApolloClient({
+    networkInterface: createBatchingNetworkInterface({
+        uri: 'http://localhost:8000/graphql',
+    }),
+    connectToDevTools: true,
+})
+
+// Install the vue plugin
+Vue.use(VueApollo)
+
+const apolloProvider = new VueApollo({
+    defaultClient: apolloClient,
+})
+
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    // Apollo GraphQL
+    apolloProvider,
 });
