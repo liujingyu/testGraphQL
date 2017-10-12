@@ -6034,6 +6034,10 @@ vue-apollo@^2.1.0-rc.5:
     lodash.omit "^4.5.0"
     lodash.throttle "^4.1.1"
 
+vue-form-generator@^2.0.0:
+  version "2.0.0"
+  resolved "http://registry.npm.taobao.org/vue-form-generator/download/vue-form-generator-2.0.0.tgz#c52c2a92d8fbdc85e749044227520125ede7c26b"
+
 vue-hot-reload-api@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/vue-hot-reload-api/-/vue-hot-reload-api-2.1.0.tgz#9ca58a6e0df9078554ce1708688b6578754d86de"
@@ -6055,6 +6059,10 @@ vue-loader@^13.0.5:
     vue-hot-reload-api "^2.1.0"
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.5.3"
+
+vue-router@^3.0.0:
+  version "3.0.0"
+  resolved "http://registry.npm.taobao.org/vue-router/download/vue-router-3.0.0.tgz#458092ad5d8e3b8d26661cfbcbf46c120f8ea1ae"
 
 vue-style-loader@^3.0.0:
   version "3.0.3"

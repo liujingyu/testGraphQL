@@ -23,19 +23,36 @@ window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+import Vue from 'vue';
+
+window.Vue = Vue;
+
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
+
+import VueApollo from 'vue-apollo';
+
+// Install the vue plugin
+Vue.use(VueApollo);
+
+//import VueFormGenerator from "vue-form-generator";
+
+//Vue.use(VueFormGenerator);
+
+
 /**
  * Next we will register the CSRF Token as a common header with Axios so that
  * all outgoing HTTP requests automatically have it attached. This is just
  * a simple convenience so we don't have to attach every token manually.
  */
 
-let token = document.head.querySelector('meta[name="csrf-token"]');
+//let token = document.head.querySelector('meta[name="csrf-token"]');
 
-if (token) {
-    window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-} else {
-    console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-}
+//if (token) {
+    //window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+//} else {
+    //console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+//}
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

@@ -20,6 +20,8 @@
     },
     "dependencies": {
         "apollo-client": "^1.9.3",
-        "vue-apollo": "^2.1.0-rc.5"
+        "vue-apollo": "^2.1.0-rc.5",
+        "vue-form-generator": "^2.0.0",
+        "vue-router": "^3.0.0"
     }
 }

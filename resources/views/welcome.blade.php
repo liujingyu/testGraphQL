@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-            <example></example>
+        <router-view></router-view>
     </div>
 </div>
 @endsection

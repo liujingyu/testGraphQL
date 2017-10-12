@@ -5,21 +5,14 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+import './bootstrap';
 
-window.Vue = require('vue');
+import router from './routes';
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+import './components';
 
-Vue.component('example', require('./components/Example.vue'));
-
-import Vue from 'vue'
-import { ApolloClient, createBatchingNetworkInterface } from 'apollo-client'
-import VueApollo from 'vue-apollo'
+import { ApolloClient, createBatchingNetworkInterface } from 'apollo-client';
+import VueApollo from 'vue-apollo';
 
 // Create the apollo client
 const apolloClient = new ApolloClient({
@@ -27,10 +20,7 @@ const apolloClient = new ApolloClient({
         uri: 'http://localhost:8000/graphql',
     }),
     connectToDevTools: true,
-})
-
-// Install the vue plugin
-Vue.use(VueApollo)
+});
 
 const apolloProvider = new VueApollo({
     defaultClient: apolloClient,
@@ -38,6 +28,7 @@ const apolloProvider = new VueApollo({
 
 const app = new Vue({
     el: '#app',
+    router,
     // Apollo GraphQL
     apolloProvider,
 });
