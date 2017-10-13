@@ -17,10 +17,22 @@ import gql from 'graphql-tag'
 import VueFormGenerator from "vue-form-generator";
 Vue.use(VueFormGenerator);
 
+// GraphQL Mutation with one parameter
+const upvoteMutation = gql`
+  mutation createPig($code: String, $name: String) {
+      createPig(code: $code, name: $name, birth:"2017-12-12") {
+              id
+              birth
+              name
+              code
+          }
+    }
+`;
+
 export default {
     apollo: {
         // Query with parameters
-        model: {
+        abc: {
             // gql query
             query: gql`query Pigs($id: String) {
                 pigs(id: $id) {
@@ -46,6 +58,7 @@ export default {
     },
 	data() {
 
+        self = this;
 		return {
 
 			model: {
@@ -67,8 +80,6 @@ export default {
 					inputType: "text",
 					label: "Code (disabled text field)",
 					model: "code",
-					readonly: true,         
-					disabled: true
 				},{
 					type: "input",
 					inputType: "text",
@@ -81,7 +92,10 @@ export default {
 					type: "submit",
 					label: "",
 					buttonText: "Submit",
-					validateBeforeSubmit: true
+					validateBeforeSubmit: true,
+                    onSubmit: function (data) {
+                        self.upvote(data)
+                    }
 				}]
 			},
 
@@ -90,7 +104,24 @@ export default {
 				validateAfterChanged: false
 			}
 		}
-	}
+	},
+    methods: {
+        upvote: function (data) {
+            // Mutation
+            this.$apollo.mutate({
+                mutation: upvoteMutation,
+                variables: {
+                    code: data.code,
+                    name: data.name,
+                },
+            }).then(data => {
+                console.log('Done upvoting.');
+            }).catch(err => {
+                console.log(err);
+            });
+        },
+
+    }
 }
 
 </script>

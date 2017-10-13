@@ -58974,7 +58974,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_graphql_tag___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_graphql_tag__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_form_generator__ = __webpack_require__(147);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_form_generator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_form_generator__);
-var _templateObject = _taggedTemplateLiteral(["query Pigs($id: String) {\n                pigs(id: $id) {\n                    id\n                    code\n\t\t\t\t\tname\n                    birth\n                }\n            }"], ["query Pigs($id: String) {\n                pigs(id: $id) {\n                    id\n                    code\n\t\t\t\t\tname\n                    birth\n                }\n            }"]);
+var _templateObject = _taggedTemplateLiteral(["\n  mutation createPig($code: String, $name: String) {\n      createPig(code: $code, name: $name, birth:\"2017-12-12\") {\n              id\n              birth\n              name\n              code\n          }\n    }\n"], ["\n  mutation createPig($code: String, $name: String) {\n      createPig(code: $code, name: $name, birth:\"2017-12-12\") {\n              id\n              birth\n              name\n              code\n          }\n    }\n"]),
+    _templateObject2 = _taggedTemplateLiteral(["query Pigs($id: String) {\n                pigs(id: $id) {\n                    id\n                    code\n\t\t\t\t\tname\n                    birth\n                }\n            }"], ["query Pigs($id: String) {\n                pigs(id: $id) {\n                    id\n                    code\n\t\t\t\t\tname\n                    birth\n                }\n            }"]);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -58997,76 +58998,99 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_1_vue_form_generator___default.a);
 
+// GraphQL Mutation with one parameter
+var upvoteMutation = __WEBPACK_IMPORTED_MODULE_0_graphql_tag___default()(_templateObject);
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-	apollo: {
-		// Query with parameters
-		model: {
-			// gql query
-			query: __WEBPACK_IMPORTED_MODULE_0_graphql_tag___default()(_templateObject),
-			// Reactive parameters
-			variables: function variables() {
-				// Use vue reactive properties here
-				return {
-					id: "2"
-				};
-			},
+    apollo: {
+        // Query with parameters
+        abc: {
+            // gql query
+            query: __WEBPACK_IMPORTED_MODULE_0_graphql_tag___default()(_templateObject2),
+            // Reactive parameters
+            variables: function variables() {
+                // Use vue reactive properties here
+                return {
+                    id: "2"
+                };
+            },
 
-			// Additional options here
-			fetchPolicy: 'cache-and-network',
-			update: function update(data) {
-				return data['pigs'][0];
-			},
-			pollInterval: 300 // ms
+            // Additional options here
+            fetchPolicy: 'cache-and-network',
+            update: function update(data) {
+                return data['pigs'][0];
+            },
+            pollInterval: 300 // ms
 
-		}
-	},
-	data: function data() {
+        }
+    },
+    data: function data() {
 
-		return {
+        self = this;
+        return {
 
-			model: {
-				id: "",
-				code: "",
-				name: ""
-			},
+            model: {
+                id: "",
+                code: "",
+                name: ""
+            },
 
-			schema: {
-				fields: [{
-					type: "input",
-					inputType: "hidden",
-					label: "",
-					model: "id",
-					readonly: true,
-					disabled: true
-				}, {
-					type: "input",
-					inputType: "text",
-					label: "Code (disabled text field)",
-					model: "code",
-					readonly: true,
-					disabled: true
-				}, {
-					type: "input",
-					inputType: "text",
-					label: "Name",
-					model: "name",
-					placeholder: "Your name",
-					featured: true,
-					required: true
-				}, {
-					type: "submit",
-					label: "",
-					buttonText: "Submit",
-					validateBeforeSubmit: true
-				}]
-			},
+            schema: {
+                fields: [{
+                    type: "input",
+                    inputType: "hidden",
+                    label: "",
+                    model: "id",
+                    readonly: true,
+                    disabled: true
+                }, {
+                    type: "input",
+                    inputType: "text",
+                    label: "Code (disabled text field)",
+                    model: "code"
+                }, {
+                    type: "input",
+                    inputType: "text",
+                    label: "Name",
+                    model: "name",
+                    placeholder: "Your name",
+                    featured: true,
+                    required: true
+                }, {
+                    type: "submit",
+                    label: "",
+                    buttonText: "Submit",
+                    validateBeforeSubmit: true,
+                    onSubmit: function onSubmit(data) {
+                        self.upvote(data);
+                    }
+                }]
+            },
 
-			formOptions: {
-				validateAfterLoad: false,
-				validateAfterChanged: false
-			}
-		};
-	}
+            formOptions: {
+                validateAfterLoad: false,
+                validateAfterChanged: false
+            }
+        };
+    },
+
+    methods: {
+        upvote: function upvote(data) {
+            // Mutation
+            this.$apollo.mutate({
+                mutation: upvoteMutation,
+                variables: {
+                    code: data.code,
+                    name: data.name
+                }
+            }).then(function (data) {
+                console.log('Done upvoting.');
+            }).catch(function (err) {
+                console.log(err);
+            });
+        }
+
+    }
 });
 
 /***/ }),
